@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f7f2">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Refeições">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <title>Refeições</title>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div><p id="today" class="eyebrow"></p><h1>Refeições</h1></div>
+      <button id="exportButton" class="icon-button" aria-label="Exportar cópia de segurança" title="Exportar backup">⇧</button>
+    </header>
+    <section class="summary"><span>Registos de hoje</span><strong id="todayCount">0</strong><small>refeições</small></section>
+    <section><div class="section-heading"><h2>Histórico recente</h2><button id="importButton" class="link-button">Importar</button></div><input id="importFile" type="file" accept="application/json" hidden><div id="mealList" class="meal-list"></div></section>
+  </main>
+  <button id="addButton" class="add-button" aria-label="Adicionar refeição"><b>+</b> Adicionar</button>
+  <div id="backdrop" class="backdrop hidden"></div>
+  <section id="sheet" class="sheet hidden" role="dialog" aria-modal="true" aria-labelledby="formTitle">
+    <div class="handle"></div><div class="sheet-heading"><h2 id="formTitle">Nova refeição</h2><button id="closeButton" class="icon-button" aria-label="Fechar">×</button></div>
+    <form id="mealForm">
+      <fieldset><legend>Tipo de refeição</legend><div class="type-grid">
+        <label><input type="radio" name="type" value="Pequeno-almoço" checked><span>Pequeno-almoço</span></label>
+        <label><input type="radio" name="type" value="Almoço"><span>Almoço</span></label>
+        <label><input type="radio" name="type" value="Jantar"><span>Jantar</span></label>
+        <label><input type="radio" name="type" value="Snack"><span>Snack</span></label>
+      </div></fieldset>
+      <div class="date-grid"><label>Data<input id="date" type="date" required></label><label>Hora<input id="time" type="time" required></label></div>
+      <label>Notas <small>opcional</small><textarea id="notes" rows="2" maxlength="160" placeholder="Ex.: peixe com arroz"></textarea></label>
+      <button class="save-button" type="submit">Guardar refeição</button>
+    </form>
+  </section>
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
